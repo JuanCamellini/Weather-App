@@ -12,7 +12,7 @@
             <div class="today forecast">
                 <div class="forecast-header">
                     <div class="day"> {{ date0 }} UTC </div>
-                    <div class="date">{% now "1" %}</div>
+                    <div class="date">{% now "l" %}</div>
                 </div> <!-- .forecast-header -->
                 <div class="forecast-content">
                     <div class="location" style="align-self: flex-end;"></div>
@@ -23,11 +23,10 @@
                         </div>
                         <div class="num" style="font-size:70px">{{ temp }}<sup>o</sup>C</div>
                     </div>
-                    <span><img src="images/icon-umberella.png" alt="">{{ status|capfirst }}%</span>
-                    <span><img src="images/icon-wind.png" alt="">{{ wind }}m/s</span>
-                    <span><img src="images/icon-compass.png" alt="">{{ degree }}</span>
-                    <span><img style="height: 25px; width: 25px;" src="{%static 'images/hot.png' %}"
-                        alt="status">{{status|capfirst }}</span>							
+                    <span><img src="{% static '/weather/images/icon-umberella.png' %}" alt="">{{humidity}}%</span>
+                    <span><img src="{% static '/weather/images/icon-wind.png' %}" alt="">{{ wind }}m/s</span>
+                    <span><img src="{% static '/weather/images/icon-compass.png' %}" alt="">{{ degree }}</span>
+                    <span>{{status|capfirst }}</span>							
                     </div>
                 </div>
 

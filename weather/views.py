@@ -52,7 +52,7 @@ def results(request):
             
         source = urllib.request.urlopen(url).read()
         dataset = json.loads(source)
-        
+        print(dataset)
         try: 
             context = {
                 ###
