@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        {% load static %}
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+		<title>{% block title %}WeatherApp{% endblock %}</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+		
+
+		<!-- Loading main css file -->
+		<link href="{% static '\weather\css\style.css' %}" rel="stylesheet" />
+		
+		<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body>
+		
+		<div class="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="{% url 'home' %}" class="branding">
+						<img src="{% static '/weather/images/logo.png' %}" alt="" class="logo">
+						<div class="logo-type">
+							<h1 class="site-title">Weather Application</h1>
+							<small class="site-description">Juan Camellini</small>
+						</div>
+					</a>
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item current-menu-item"><a href="{% url 'home' %}">Home</a></li>
+							<li class="menu-item"><a href="{% url 'cameras' %}">Live cameras</a></li>
+							<li class="menu-item"><a href="{% url 'contact' %}">Contact</a></li>
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+
+				</div>
+			</div> <!-- .site-header -->
+
+			<div class="hero" data-bg-image="{% static '/weather/images/forecastbanner.jpg' %}" >
+				<div class="container">
+					<form method="POST" class="find-location" action="{% url 'results' %}">{% csrf_token %}
+						<input  name="city" type="text" placeholder="Find your location..." required>
+						<input type="submit" value="Find">
+					</form>
+
+				</div>
+				
+			</div>
+			{% block content %}
+
+        	{% endblock content %}
+			
+			<main class="main-content">
+				<div class="fullwidth-block " >
+					<div class="container">
+						<h2 class="section-title">Live cameras</h2>
+						<div class="row">
+							
+							<div class="col-md-3 col-sm-6">
+								<div class="live-camera">
+									<figure class="live-camera-cover"><iframe width="265" height="195" src="https://www.youtube.com/embed/if91GyWP3zQ" title="Four Seasons Hotel Buenos Aires - Live Camera" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="border-radius: 5%;" allowfullscreen></iframe></figure>
+									<h3 class="location">Buenos Aires - Obelisco</h3>
+									<small class="date">{{ time_buenosAires }}</small>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6">
+								<div class="live-camera">
+									<figure class="live-camera-cover"><iframe width="265" height="195" src="https://www.youtube.com/embed/THIhjNukBdk" title="【LIVE】渋谷 Shibuya Scramble Crossing Tokyo, Japan――LIVE CAMERA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"style="border-radius: 5%;" allowfullscreen></iframe></figure>
+									<h3 class="location">Tokyo - Shibuya </h3>
+									<small class="date">{{time_tokyo}}</small>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6">
+								<div class="live-camera">
+									<figure class="live-camera-cover"><iframe width="265" height="195" src="https://www.youtube.com/embed/1-iS7LArMPA" title="EarthCam Live:  Times Square in 4K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"style="border-radius: 5%;" allowfullscreen></iframe></figure>
+									<h3 class="location">Nueva York - Times Square</h3>
+									<small class="date">{{time_nuevaYork}}</small>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6">
+								<div class="live-camera">
+									<figure class="live-camera-cover"><iframe width="265" height="195" src="https://www.youtube.com/embed/Cp4RRAEgpeU" title="Live @ Santa Claus Village" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"style="border-radius: 5%;" allowfullscreen></iframe></figure>
+									<h3 class="location">Finland - Santa Claus Village</h3>
+									<small class="date">{{time_finland}}</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fullwidth-block" data-bg-color="#262936" style="background-color: rgb(38, 41, 54);">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="news">
+									<div class="date">06.10</div>
+									<h3><a href="#">Doloremque laudantium totam sequi </a></h3>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="news">
+									<div class="date">06.10</div>
+									<h3><a href="#">Doloremque laudantium totam sequi </a></h3>
+									<p>Nobis architecto consequatur ab, ea, eum autem aperiam accusantium placeat vitae facere explicabo temporibus minus distinctio cum optio quis, dignissimos eius aspernatur fuga. Praesentium totam, corrupti beatae amet expedita veritatis.</p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="news">
+									<div class="date">06.10</div>
+									<h3><a href="#">Doloremque laudantium totam sequi </a></h3>
+									<p>Enim impedit officiis placeat qui recusandae doloremque possimus, iusto blanditiis, quam optio delectus maiores. Possimus rerum, velit cum natus eos. Cumque pariatur beatae asperiores, esse libero quas ad dolorem. Voluptates.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<br>
+			</main> <!-- .main-content -->
+
+			<footer class="site-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8">
+							<form action="#" class="subscribe-form">
+								<input type="text" placeholder="Enter your email to subscribe...">
+								<input type="submit" value="Subscribe">
+							</form>
+						</div>
+						<div class="col-md-3 col-md-offset-1">
+							<div class="social-links">
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+								<a href="#"><i class="fa fa-pinterest"></i></a>
+							</div>
+						</div>
+					</div>
+
+					<p class="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+				</div>
+			</footer> <!-- .site-footer -->
+		</div>
+		
+		<script src="{% static 'weather/js/jquery-1.11.1.min.js' %}"></script>
+		<script src="{% static 'weather/js/plugins.js' %}"></script>
+		<script src="{% static 'weather/js/app.js' %}"></script>
+		
+	</body>
+
+</html>
